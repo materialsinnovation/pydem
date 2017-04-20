@@ -5,9 +5,9 @@ The Inductive Design Exploration Method (IDEM) is a robust method for accounting
 For further references please see:
 * McDowell, David L., et al. Integrated design of multiscale, multifunctional materials and products. Butterworth-Heinemann, 2009.
 
-# PyDEM
-Utilizing a Python-scripted framework for IDEM, the Python Design Exploration Method (PyDEM) implements a fully general IDEM instantiation that allows for the linkage of input variables, objective functions, and levels or mappings. A short introduction is covered in the examples section. Any additional code or example contributions are welcome.
+# pyDEM
+Utilizing a Python-scripted framework for IDEM, the Python Design Exploration Method (pyDEM) implements a fully general IDEM instantiation that allows for the linkage of input variables, objective functions, and levels or mappings. A short introduction is covered in the examples section. Any additional code or example contributions are welcome.
 
 # Documentation
-See the PyDEM examples and API.
+See the pyDEM examples and API.
 
