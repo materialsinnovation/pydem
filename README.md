@@ -3,6 +3,7 @@
 The Inductive Design Exploration Method (IDEM) is a robust method for accounting for uncertainty propagation through multi-level problems. IDEM combines several solution-finding strategies, such as top-down (inductive) and bottom-up (deductive) design exploration, discretized ranges of parameters, with recursive function evaluation to identify robust solutions to materials design problems. This approach lends itself to developing process-structure-property-performance (PSPP) mappings of material systems, and can help identify materials of interest for future exploration.
 
 For further references please see:
+* Choi, Haejin, et al. "An inductive design exploration method for robust multiscale materials design." Journal of Mechanical Design 130.3 (2008): 031402, doi:10.1115/1.2829860
 * McDowell, David L., et al. Integrated design of multiscale, multifunctional materials and products. Butterworth-Heinemann, 2009.
 
 # pyDEM
