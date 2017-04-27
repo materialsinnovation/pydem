@@ -1,0 +1,484 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>pyDEM Functions &#8212; pyDEM 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  
+   
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyDEM 2.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="container-wrapper">
+
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar">
+        <a href="
+    index.html" class="text-logo">pyDEM 2.0 documentation</a>
+        
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Table Of Contents</h2>
+  </div>
+  <div class="sidebar-toc">
+    
+    
+      <ul>
+<li><a class="reference internal" href="#">pyDEM Functions</a><ul>
+<li><a class="reference internal" href="#find-boundary">Find boundary</a></li>
+<li><a class="reference internal" href="#idem">IDEM</a></li>
+<li><a class="reference internal" href="#find-feasible">Find feasible</a></li>
+<li><a class="reference internal" href="#explore-boundary">Explore boundary</a></li>
+<li><a class="reference internal" href="#fix-concavity">Fix concavity</a></li>
+<li><a class="reference internal" href="#get-sub-dimensional-range">Get sub-dimensional range</a></li>
+<li><a class="reference internal" href="#get-discretized-sub-dimensional-range">Get discretized sub-dimensional range</a></li>
+<li><a class="reference internal" href="#plot-subplot-of-higher-dimensions">Plot subplot of higher dimensions</a></li>
+<li><a class="reference internal" href="#plot-combinations-of-input-variables">Plot combinations of input variables</a></li>
+<li><a class="reference internal" href="#scale-values-for-easy-visualization">Scale values for easy visualization</a></li>
+<li><a class="reference internal" href="#plot">Plot</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  </div>
+</div>
+        
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="search.html" method="GET" role="form">
+        <div class="input-group">
+          <input name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+        <div id="right-column">
+          
+          <div role="navigation" aria-label="breadcrumbs navigation">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Docs</a></li>
+              
+              <li>pyDEM Functions</li>
+            </ol>
+          </div>
+          
+          <div class="document clearer body">
+            
+  <div class="section" id="pydem-functions">
+<h1>pyDEM Functions<a class="headerlink" href="#pydem-functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="find-boundary">
+<h2>Find boundary<a class="headerlink" href="#find-boundary" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.find_boundary">
+<code class="descclassname">pydem.</code><code class="descname">find_boundary</code><span class="sig-paren">(</span><em>f</em>, <em>x_1</em>, <em>x_2</em>, <em>x_err</em>, <em>bound</em>, <em>f_0=[]</em>, <em>em=&lt;function hdemi&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.find_boundary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find an approximation of the boundary representing the feasible region. Uses bisection search between a known interior point and exterior point.</p>
+<dl class="docutils">
+<dt>f <span class="classifier-delimiter">:</span> <span class="classifier">array_like</span></dt>
+<dd>Mapping functions (number of bounding functions with nominal value last, number of output variables)</dd>
+<dt>x_1 <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Robust nominal input to search between</dd>
+<dt>x_2 <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Non-robust nominal input to search between</dd>
+<dt>x_err <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Relative uncertainty in each dimension</dd>
+<dt>bound <span class="classifier-delimiter">:</span> <span class="classifier">Boundary</span></dt>
+<dd>Feasible region in the output space</dd>
+<dt>f_0 <span class="classifier-delimiter">:</span> <span class="classifier">list, optional</span></dt>
+<dd>Previously computed evaluations of f array for both x_1 and x_2 to reduce total computation slightly</dd>
+<dt>em <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd>Error margin function which may be evaluated em(f, x, dx, bound) and return expected values &lt; 1 for non-robust solutions and values &gt;= 1 for robust solutions.</dd>
+</dl>
+<dl class="docutils">
+<dt>x_m <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Approximation of the boundary point based on 10 bisection iterations or error margin values in range (1-tolerance, 1+tolerance).</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="idem">
+<h2>IDEM<a class="headerlink" href="#idem" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.idem">
+<code class="descclassname">pydem.</code><code class="descname">idem</code><span class="sig-paren">(</span><em>f</em>, <em>xs</em>, <em>x_err</em>, <em>objective_bound</em>, <em>ignore_concavity=False</em>, <em>ignore_boundary=False</em>, <em>em=&lt;function vor&gt;</em>, <em>ignore_region=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.idem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inductive Design Exploration Method. See &#8220;An Inductive Design Exploration Method for Robust Multiscale Materials Design&#8221; Choi, McDowell, Allen, Rosen, Mistree.
+Perform all critical steps to result in a feasible region boundary for the current design level based on constraints from the previous level, mapping functions, and uncertainties.
+Initially screen a discretized input space based on xs which will satisfy the robust design threshold.
+Several additional checks may be completed such as finding the boundary between the discrete feasible points and the infeasible region along each dimension,
+potential concavities in the feasible space, and ignoring potentially feasible combinations due to additional constraints.</p>
+<dl class="docutils">
+<dt>f <span class="classifier-delimiter">:</span> <span class="classifier">array_like</span></dt>
+<dd>Mapping functions (number of bounding functions with nominal value last, number of output variables)</dd>
+<dt>xs <span class="classifier-delimiter">:</span> <span class="classifier">list of lists</span></dt>
+<dd>Discrete values to sample in each dimension. Unless ingore_region is specified, the full factorial combination space of these values will be explored.</dd>
+<dt>x_err <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>Relative uncertainty for each input dimension</dd>
+<dt>objective_bound <span class="classifier-delimiter">:</span> <span class="classifier">Boundary</span></dt>
+<dd>Describes the region which satisfies design criteria for the previous level (current output region)</dd>
+<dt>ignore_concavity <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd>Controls the logic flow for evaluating concave regions. Compute the feasibility of the centroid of each simplex in the Delaunay Triangulation.
+If centroid is feasible, simplex remains in the feasible space, else it is removes and is_inner will evaluate to False within this simplex.
+Defaults to False (evaluate concavity).</dd>
+<dt>ignore_boundary <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd>Controls the logic flow for evaluating boundary points (HDemi ~ 1). If False, will execute explore_boundary and probe for boundary locations between feasible and infeasible configurations.
+Defaults to False (evaluate boundaries).</dd>
+<dt>em <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd>Error margin function which may be evaluated em(f, x, dx, bound) and return expected values &lt; 1 for non-robust solutions and values &gt;= 1 for robust solutions.</dd>
+<dt>ignore_region <span class="classifier-delimiter">:</span> <span class="classifier">Boundary, optional</span></dt>
+<dd>Initial configurations within this region will be ignored for feasibility computation.
+Once simplices are constructed for ConcaveBoundary of the current feasible space, centroids are examined to ensure they do not lie in this ignore_region.</dd>
+</dl>
+<dl class="docutils">
+<dt>feas_values <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>(n_feas_points) shape array containing the error margin values for the evaluated feasible points</dd>
+<dt>bound <span class="classifier-delimiter">:</span> <span class="classifier">ConcaveBoundary</span></dt>
+<dd>ConcaveBoundary made up of the feasible and boundary points (if found). Concavities may or may not be removed based on selected</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="find-feasible">
+<h2>Find feasible<a class="headerlink" href="#find-feasible" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.find_feasible">
+<code class="descclassname">pydem.</code><code class="descname">find_feasible</code><span class="sig-paren">(</span><em>f</em>, <em>xs</em>, <em>x_err</em>, <em>objective_bound</em>, <em>em=&lt;function vor&gt;</em>, <em>ignore_region=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.find_feasible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform the initial step of IDEM which requires the evaluation of the discretized region using an error metric.
+Parameters
+&#8212;&#8212;&#8212;-
+f : array_like</p>
+<blockquote>
+<div>Mapping functions (number of bounding functions with nominal value last, number of output variables)</div></blockquote>
+<dl class="docutils">
+<dt>xs <span class="classifier-delimiter">:</span> <span class="classifier">list of lists</span></dt>
+<dd>Discrete values to sample in each dimension. Unless ingore_region is specified, the full factorial combination space of these values will be explored.</dd>
+<dt>x_err <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>Relative uncertainty for each input dimension</dd>
+<dt>objective_bound <span class="classifier-delimiter">:</span> <span class="classifier">Boundary</span></dt>
+<dd>Describes the region which satisfies design criteria for the previous level (current output region)</dd>
+<dt>em <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd>Error margin function which may be evaluated em(f, x, dx, bound) and return expected values &lt; 1 for non-robust solutions and values &gt;= 1 for robust solutions.</dd>
+<dt>ignore_region <span class="classifier-delimiter">:</span> <span class="classifier">Boundary, optional</span></dt>
+<dd>Initial configurations within this region will be ignored for feasibility computation.</dd>
+</dl>
+<dl class="docutils">
+<dt>points <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Array of points in n-dimensional space (n_points, n_dims) for those configurations found to be robust</dd>
+<dt>robustness <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Array of robustness values for all robust solutions based on the error margin computed.</dd>
+<dt>explored_robustness <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Total array of all explored points and their computed error margin values.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="explore-boundary">
+<h2>Explore boundary<a class="headerlink" href="#explore-boundary" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.explore_boundary">
+<code class="descclassname">pydem.</code><code class="descname">explore_boundary</code><span class="sig-paren">(</span><em>f</em>, <em>xs</em>, <em>x_err</em>, <em>objective_bound</em>, <em>x_robust</em>, <em>em=&lt;function vor&gt;</em>, <em>ignore_region=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.explore_boundary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Examine robust configurations with non-robust neighbors in all dimensions.
+If any such neighbor pair is found, the  boundaries are explored using find_boundary to solve for the point where the error margin approximates the true boundary within some tolerance.
+This function can require significant additional computational effort depending on the initial gridding density and the dimensionality.</p>
+<dl class="docutils">
+<dt>f <span class="classifier-delimiter">:</span> <span class="classifier">array_like</span></dt>
+<dd>Mapping functions (number of bounding functions with nominal value last, number of output variables)</dd>
+<dt>xs <span class="classifier-delimiter">:</span> <span class="classifier">list of lists</span></dt>
+<dd>Discrete values to sample in each dimension. Unless ingore_region is specified, the full factorial combination space of these values will be explored.</dd>
+<dt>x_err <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>Relative uncertainty for each input dimension</dd>
+<dt>objective_bound <span class="classifier-delimiter">:</span> <span class="classifier">Boundary</span></dt>
+<dd>Describes the region which satisfies design criteria for the previous level (current output region)</dd>
+<dt>em <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd>Error margin function which may be evaluated em(f, x, dx, bound) and return expected values &lt; 1 for non-robust solutions and values &gt;= 1 for robust solutions.</dd>
+<dt>ignore_region <span class="classifier-delimiter">:</span> <span class="classifier">Boundary, optional</span></dt>
+<dd>Do not explore boundary between infeasible_region feasible points and robust configurations.</dd>
+</dl>
+<dl class="docutils">
+<dt>points <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>(n_bound_points, n_dim) Array of the explored boundary points, all within tolerance of the true boundary location based on error metric.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="fix-concavity">
+<h2>Fix concavity<a class="headerlink" href="#fix-concavity" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.fix_concavity">
+<code class="descclassname">pydem.</code><code class="descname">fix_concavity</code><span class="sig-paren">(</span><em>f</em>, <em>x_err</em>, <em>objective_bound</em>, <em>boundary</em>, <em>em=&lt;function vor&gt;</em>, <em>ignore_region=None</em>, <em>plot_concave=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.fix_concavity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Examine all simplex centroids in the Delaunay Triangulation to determine if they lie within feasible regions.
+Obviously still limited in terms of finding infeasible, concave regions due to fineness of meshing related to initial discretization.
+Larger performance hit in higher dimensional space due to the larger number of simplices constructed.</p>
+<dl class="docutils">
+<dt>f <span class="classifier-delimiter">:</span> <span class="classifier">array_like</span></dt>
+<dd>Mapping functions (number of bounding functions with nominal value last, number of output variables)</dd>
+<dt>x_err <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>Relative uncertainty for each input dimension</dd>
+<dt>objective_bound <span class="classifier-delimiter">:</span> <span class="classifier">Boundary</span></dt>
+<dd>Describes the region which satisfies design criteria for the previous level (current output region)</dd>
+<dt>boundary <span class="classifier-delimiter">:</span> <span class="classifier">ConcaveBoundary</span></dt>
+<dd>Triangulation to remove simplexes from using the aforementioned criteria</dd>
+<dt>em <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd>Error margin function which may be evaluated em(f, x, dx, bound) and return expected values &lt; 1 for non-robust solutions and values &gt;= 1 for robust solutions.</dd>
+<dt>ignore_region <span class="classifier-delimiter">:</span> <span class="classifier">Boundary, optional</span></dt>
+<dd>Perform additional filtering if this region is supplied to ensure that is_inner for the constructed boundary does not overlap with the ignored region.</dd>
+<dt>plot_concave <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd>Plot the resultant space using a gridded view to ensure proper construction of space. Default False</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="get-sub-dimensional-range">
+<h2>Get sub-dimensional range<a class="headerlink" href="#get-sub-dimensional-range" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.get_sub_dim_range">
+<code class="descclassname">pydem.</code><code class="descname">get_sub_dim_range</code><span class="sig-paren">(</span><em>feas</em>, <em>axis_ranges</em>, <em>range_index</em>, <em>values=None</em>, <em>bnd=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.get_sub_dim_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get points within ranges along each dimension (hyperrectangular region) for use in plotting functions.
+Note the hyperrectangle is only defined in the first n dimensions, where n is the length of axis_ranges.
+Dimensions not specified are assumed to be valid on :math:&#8217;left[-infty, inftyright]&#8217;</p>
+<dl class="docutils">
+<dt>feas <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>(n_points, n_dim) array of feasible points to plot</dd>
+<dt>axis_ranges <span class="classifier-delimiter">:</span> <span class="classifier">array_like</span></dt>
+<dd>list of lists describing the ranges possible along each axis. Ranges are expressed by adjacent indices.
+i.e. feas[1,0] is valid if the value is in range [axis_ranges[0][0], axis_ranges[0][1])</dd>
+<dt>range_index <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>list of integer indices into the axis_ranges array for the valid combination of axis_values to use.</dd>
+<dt>values <span class="classifier-delimiter">:</span> <span class="classifier">list, optional</span></dt>
+<dd>robustness (or other) values associated with the feasible points.</dd>
+</dl>
+<p>bnd : array_like, optional</p>
+<dl class="docutils">
+<dt>feas <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>indexed values of the feas array input meeting criteria</dd>
+<dt>values <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>indexed values of the values array input matching the feasible points which satisfied criteria
+None if no values were supplied</dd>
+<dt>bnd <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>indexed values of the bnd array input meeting criteria</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="get-discretized-sub-dimensional-range">
+<h2>Get discretized sub-dimensional range<a class="headerlink" href="#get-discretized-sub-dimensional-range" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.get_sub_dim_discrete">
+<code class="descclassname">pydem.</code><code class="descname">get_sub_dim_discrete</code><span class="sig-paren">(</span><em>feas</em>, <em>axis_values</em>, <em>value_index</em>, <em>values=None</em>, <em>bnd=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.get_sub_dim_discrete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get points with discrete values (not ranges) to plot.
+Select points whose location in the first n dimensions is exactly that of the criteria described by axis_values and value_index.</p>
+<dl class="docutils">
+<dt>feas <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>(n_points, n_dim) array of feasible points to plot</dd>
+<dt>axis_values <span class="classifier-delimiter">:</span> <span class="classifier">array_like</span></dt>
+<dd>list of lists describing the discrete values possible along each axis.
+The length of the first dimension of axis_values is the number of dimensions to select for exact values (flatten into separate plots) while plotting.
+values are compared exactly, use get_sub_dim_range for values which may fall inside a range.</dd>
+<dt>value_index <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>list of integer indices into the axis_values array for the valid combination of axis_values to use.
+All combinations of feas[:,i] == axis_values[i][value_index[i]] must be true for points to be selected.
+Must be of same length or longer than axis_values.</dd>
+<dt>values <span class="classifier-delimiter">:</span> <span class="classifier">list, optional</span></dt>
+<dd>robustness (or other) values associated with the feasible points.</dd>
+</dl>
+<p>bnd : array_like, optional</p>
+<dl class="docutils">
+<dt>feas <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>indexed values of the feas array input meeting criteria</dd>
+<dt>values <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>indexed values of the values array input matching the feasible points which satisfied criteria
+None if no values were supplied</dd>
+<dt>bnd <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>indexed values of the bnd array input meeting criteria</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="plot-subplot-of-higher-dimensions">
+<h2>Plot subplot of higher dimensions<a class="headerlink" href="#plot-subplot-of-higher-dimensions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.plot_expand_dims_subplot">
+<code class="descclassname">pydem.</code><code class="descname">plot_expand_dims_subplot</code><span class="sig-paren">(</span><em>feas</em>, <em>values=None</em>, <em>bnd=None</em>, <em>names=[]</em>, <em>axis_ranges=[]</em>, <em>discrete_dims=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.plot_expand_dims_subplot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Best method so far to plot higher dimensional spaces. Expanded dimensions are those who are not plotted on the individual subplot, but rather expanded over a sequence of subplots.
+That is, a 2D grid of subplots may be used to plot the first two dimensions of a series of points, with each subplot being used to plot the remainder of dimensions.
+Currently support expanding 3 dimensions, that is create multiple grid images that may be flipped through in sequence to provide 3-dimensional plot expansion.
+Always saves plots since they typically are of such resolution as to not display nicely on the user&#8217;s screen.</p>
+<dl class="docutils">
+<dt>feas <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>(n_points, n_dim) array of feasible points to plot</dd>
+<dt>values <span class="classifier-delimiter">:</span> <span class="classifier">list, optional</span></dt>
+<dd>List of values associated with the feasible points. Colorbar will be created to show variation of these values.</dd>
+<dt>bnd <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, optional</span></dt>
+<dd>(n_bound_points, n_dim) array of boundary points. Will always be plotted in black to differentiate from feasible points.</dd>
+<dt>names <span class="classifier-delimiter">:</span> <span class="classifier">list, optional</span></dt>
+<dd>List of various plotting names that must be supplied. In order; plot title, 1-axis, 2-axis (if exists), 3-axis (if exists), 4-axis (if exists), 5-axis (if exists), ... n-axis (if exists), and values (if exists).</dd>
+<dt>axis_ranges <span class="classifier-delimiter">:</span> <span class="classifier">list of lists, optional</span></dt>
+<dd>First list iterates over axes to be expanded in plotting. Internal lists provide values to be used for plotting these axis.
+e.g. [[0,1], [2,4,6]] will expand the first two  and create a 2x3 grid of subplots. If discrete_dims is False, feas and bnd points between 0 and 1 on the first axis and between 2 and 4 on the second axis on subplot (2,3,1)
+Default to [], which shortcircuits to normal plotting.</dd>
+<dt>discrete_dims <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd>If True, each value in axis_ranges is treated as a discrete selection from feas and bnd to plot, not as ranges. Not recommened to use if boundary points are supplied since these are rarely found along discrete values. Defaults to False.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="plot-combinations-of-input-variables">
+<h2>Plot combinations of input variables<a class="headerlink" href="#plot-combinations-of-input-variables" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.plot_combinations">
+<code class="descclassname">pydem.</code><code class="descname">plot_combinations</code><span class="sig-paren">(</span><em>feas</em>, <em>values=None</em>, <em>bnd=None</em>, <em>names=[]</em>, <em>max_dim=3</em>, <em>save_fig=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.plot_combinations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot various combinations of input variables. Take points in higher dimensions space, restrict them to max_dim number of variables in several lower dimension plots.
+Additional dimensions will be flattened into the lower dimensional plot.
+e.g. 5 dimensional points plotted in a maximum 3D plot will produce 10 unique plots displaying the combinations of 3 variables on a 3D plot to display the 5D points provided.
+Lower dimensions plots are made using the plot function.</p>
+<dl class="docutils">
+<dt>feas <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>(n_points, n_dim) array of feasible points to plot</dd>
+<dt>values <span class="classifier-delimiter">:</span> <span class="classifier">list, optional</span></dt>
+<dd>List of values associated with the feasible points. Colorbar will be created to show variation of these values.</dd>
+<dt>bnd <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, optional</span></dt>
+<dd>(n_bound_points, n_dim) array of boundary points. Will always be plotted in black to differentiate from feasible points.</dd>
+<dt>names <span class="classifier-delimiter">:</span> <span class="classifier">list, optional</span></dt>
+<dd>List of various plotting names that must be supplied. In order; plot title, 1-axis, 2-axis (if exists), 3-axis (if exists), 4-axis (if exists), 5-axis (if exists), and values (if exists).
+All values which are not necessary collapse the order, e.g. a labelled 2-axis plot with values would be ordered [1-axis label, 2-axis label, value label (will be assigned to Colorbar).</dd>
+<dt>max_dim <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd>Controls the number of dimensions that will be shown on each plot
+default is a 3D plot</dd>
+<dt>save_fig <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd>Control whether to save the figures or plot to the first n figures where n is the number of plot combinations
+Saved figures will be named according to standard conventions for this module
+default False</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="scale-values-for-easy-visualization">
+<h2>Scale values for easy visualization<a class="headerlink" href="#scale-values-for-easy-visualization" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.size_scale">
+<code class="descclassname">pydem.</code><code class="descname">size_scale</code><span class="sig-paren">(</span><em>values</em>, <em>s_min</em>, <em>s_max</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.size_scale" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>values <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>values to be displayed using the size of the scatter points</dd>
+<dt>s_min <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>minimum value this set of values should be compared to</dd>
+<dt>s_max <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>maximum value this set of values should be compared to</dd>
+</dl>
+<dl class="docutils">
+<dt>sizes <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>arbitrary scaling of values which should be appropriate for linearly scaled data and be visually distinct</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="plot">
+<h2>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.plot">
+<code class="descclassname">pydem.</code><code class="descname">plot</code><span class="sig-paren">(</span><em>feas</em>, <em>values=None</em>, <em>bnd=None</em>, <em>names=None</em>, <em>fig=None</em>, <em>save_fig=False</em>, <em>subplot=(1</em>, <em>1</em>, <em>1)</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base plotting function for IDEM related visulaizations. Incorporates plotting of feasible points and boundary points.
+Feasible points may be colored based on objective values or robustness measures, for example.</p>
+<p>Plotting will automatically adjust from 2D to 3D plots. For points in n-dimensional space where n &lt; 3, all plots are 2D. Colors are assigned based on values, if provided.
+Plotting in 3D will automatically adjust to display up to 5 dimensions, where the 4th is shown as size, and the 5th as color. This is not advised for gridded spaces with n &gt; 3 since points will overlap in 3D coordinates.</p>
+<dl class="docutils">
+<dt>feas <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>(n_points, n_dim) array of feasible points to plot. n_dim &lt;= 5</dd>
+<dt>values <span class="classifier-delimiter">:</span> <span class="classifier">list, optional</span></dt>
+<dd>List of values associated with the feasible points. Colorbar will be created to show variation of these values.</dd>
+<dt>bnd <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, optional</span></dt>
+<dd>(n_bound_points, n_dim) array of boundary points. Will always be plotted in black to differentiate from feasible points.</dd>
+<dt>names <span class="classifier-delimiter">:</span> <span class="classifier">list, optional</span></dt>
+<dd>List of various plotting names that must be supplied. In order; plot title, 1-axis, 2-axis (if exists), 3-axis (if exists), 4-axis (if exists), 5-axis (if exists), and values (if exists).
+All values which are not necessary collapse the order, e.g. a labelled 2-axis plot with values would be ordered [1-axis label, 2-axis label, value label (will be assigned to Colorbar).</dd>
+<dt>fig <span class="classifier-delimiter">:</span> <span class="classifier">matplotlib.figure or int, optional</span></dt>
+<dd>Preexisting figure instance or figure number to plot on. If not supplied, a new figure will be created.</dd>
+<dt>save_fig <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd>Save the figure when done. Default to False.</dd>
+<dt>subplot <span class="classifier-delimiter">:</span> <span class="classifier">location, optional</span></dt>
+<dd>See matplotlib documentation for valid subplot location indices. Default to plotting over the entire figure, subplot (1,1,1)</dd>
+</dl>
+<dl class="docutils">
+<dt>ax <span class="classifier-delimiter">:</span> <span class="classifier">matplotlib.axes</span></dt>
+<dd>Axis that was used to draw the current plot for further manipulation</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+            
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyDEM 2.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2017, AMM. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  </body>
+</html>

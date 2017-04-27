@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>Introduction to IDEM &#8212; pyDEM 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="API.html" />
+    <link rel="prev" title="Python Design Exploration Method (pyDEM)" href="index.html" />
+  
+   
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="API.html" title="API"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Python Design Exploration Method (pyDEM)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyDEM 2.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="container-wrapper">
+
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar">
+        <a href="
+    index.html" class="text-logo">pyDEM 2.0 documentation</a>
+        
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Table Of Contents</h2>
+  </div>
+  <div class="sidebar-toc">
+    
+    
+      <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to IDEM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#further-details">Further details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#error-margins">Error margins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hyper-dimensional-error-margin-index">Hyper-Dimensional Error Margin Index <span class="math">\((HD_{EMI})\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#valid-output-region">Valid Output Region <span class="math">\(VOR\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#maximum-independent-variation">Maximum Independent Variation <span class="math">\(MIV\)</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GitHub.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="License.html">License</a></li>
+</ul>
+
+    
+  </div>
+</div>
+        
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="search.html" method="GET" role="form">
+        <div class="input-group">
+          <input name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+        <div id="right-column">
+          
+          <div role="navigation" aria-label="breadcrumbs navigation">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Docs</a></li>
+              
+              <li>Introduction to IDEM</li>
+            </ol>
+          </div>
+          
+          <div class="document clearer body">
+            
+  <div class="section" id="introduction-to-idem">
+<h1>Introduction to IDEM<a class="headerlink" href="#introduction-to-idem" title="Permalink to this headline">¶</a></h1>
+<p>The Inductive Design Exploration Method is a tool for finding robust solutions to multi-level design problems with input parameters at each level of interest.
+Each level, <span class="math">\(k\)</span>, has <span class="math">\(m\)</span> objective functions, resulting in a <span class="math">\(m\)</span>-dimensional space of feasible solutions.
+Starting at the top level, <span class="math">\(k=l\)</span>, three steps are completed to find the feasible region at the level directly below, <span class="math">\(k-1\)</span>:</p>
+<ol class="arabic simple">
+<li>At the <span class="math">\(k-1\)</span> level, multiple input parameter configurations <span class="math">\(\bar{x}\)</span> are sampled.</li>
+<li>Each <span class="math">\(\bar{x}\)</span> is then projected onto the <span class="math">\(k\)</span>-level depending on the input and mapping function uncertainties, resulting in an output range <span class="math">\(\bar{y}\)</span> at level <span class="math">\(k\)</span>.</li>
+<li>The <span class="math">\(k\)</span>-level output range <span class="math">\(\bar{y}\)</span> resulting from <span class="math">\(\bar{x}\)</span> of level <span class="math">\(k-1\)</span> is accepted or rejected according to an error margin which define the feasible region of level <span class="math">\(k\)</span>.</li>
+</ol>
+<p>The determined feasible input parameter configurations of the <span class="math">\(k-1\)</span> level are subsequently used as the new acceptable output range to find the <span class="math">\(k-2\)</span> level design feasible inputs.</p>
+</div>
+<div class="section" id="further-details">
+<h1>Further details<a class="headerlink" href="#further-details" title="Permalink to this headline">¶</a></h1>
+<p>The output range <span class="math">\(\bar{y}\)</span> is represented by <span class="math">\(\langle f_1(\bar{x}),f_2(\bar{x}),\ldots,f_m(\bar{x})\rangle\)</span>, where <span class="math">\(m\)</span> is the number of output functions.
+Each output function <span class="math">\(f_i\)</span> has an associated range of uncertainty as a result of the projection process, which can be bounded to incorporate that uncertainty using a set of functions <span class="math">\(f_{i,lower} (x) \leq f_i (x) \leq f_{i,upper} (x)\)</span>.
+This results in the construction of an <span class="math">\(m \times 3\)</span> matrix <span class="math">\(\mathbf{Z}\)</span>, where component <span class="math">\(z_{ij}\)</span> is the <span class="math">\(j^{th}\)</span> bounding function of the <span class="math">\(i^{th}\)</span> output dimension.</p>
+<p>Using these output ranges and bounding functions, a total assumed variability for the <span class="math">\(i^{th}\)</span> dimension can be found, <span class="math">\(\Delta y_i\)</span> from:</p>
+<div class="math">
+\[\begin{split}\Delta y_i = \left\{ \begin{array}{cc} \left| max_j \left( z_{ij} (\bar{x}) + \left| \frac{\delta z_{ij}}{\delta x_k} \right| \right) - \bar{y} \right| , b_i &gt; \bar{y}_i \\ \left| min_j \left( z_{ij} (\bar{x}) - \left| \frac{\delta z_{ij}}{\delta x_k} \right| \right) - \bar{y} \right| , b_i \leq \bar{y}_i \end{array}\right.\end{split}\]</div>
+<p>where <span class="math">\(b_i\)</span> is the boundary point being searched for on <span class="math">\(b_i \in S\)</span> where <span class="math">\(S\)</span> is the <span class="math">\((m-1)\)</span>-dimensional boundary of feasible space <span class="math">\(\Omega\)</span>.
+pyDEM finds <span class="math">\(b_i\)</span> along the path <span class="math">\(\langle \bar{y}, max(S_i) \rangle\)</span> using a binary search, to minimize the distance required to reach the boundary.</p>
+</div>
+<div class="section" id="error-margins">
+<h1>Error margins<a class="headerlink" href="#error-margins" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hyper-dimensional-error-margin-index">
+<h2>Hyper-Dimensional Error Margin Index <span class="math">\((HD_{EMI})\)</span><a class="headerlink" href="#hyper-dimensional-error-margin-index" title="Permalink to this headline">¶</a></h2>
+<div class="math">
+\[\begin{split}HD_{EMI} = \left\{ \begin{array}{cc} min_i \left[ \frac{\left\Vert \bar{y}_i - b_i \right\Vert}{\Delta y_i} \right] , &amp; \mbox{for} &amp; \bar{y} \in \Omega \\ -1 , &amp; \mbox{for} &amp; \bar{y} \notin \Omega \end{array}\right.\end{split}\]</div>
+<p>A value of <span class="math">\(HD_{EMI} &lt; 1\)</span> indicates the output range of the potential solution falls outside the feasible range and is not a robust solution.</p>
+</div>
+<div class="section" id="valid-output-region">
+<h2>Valid Output Region <span class="math">\(VOR\)</span><a class="headerlink" href="#valid-output-region" title="Permalink to this headline">¶</a></h2>
+<p>Checks that the entire bounds of the output region lie within the feasible region of input uncertainty.</p>
+</div>
+<div class="section" id="maximum-independent-variation">
+<h2>Maximum Independent Variation <span class="math">\(MIV\)</span><a class="headerlink" href="#maximum-independent-variation" title="Permalink to this headline">¶</a></h2>
+<p>Varies a single output parameter at a time, similar to <span class="math">\(HD_{EMI}\)</span>.</p>
+</div>
+</div>
+
+
+          </div>
+            
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-default" href="index.html" title="previous chapter (use the left arrow)">Python Design Exploration Method (pyDEM)</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-default" href="API.html" title="next chapter (use the right arrow)">API</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="API.html" title="API"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Python Design Exploration Method (pyDEM)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyDEM 2.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2017, AMM. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  </body>
+</html>
