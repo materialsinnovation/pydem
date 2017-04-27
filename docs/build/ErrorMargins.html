@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>pyDEM Error Margins &#8212; pyDEM 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pyDEM Functions" href="Functions.html" />
+    <link rel="prev" title="pyDEM Boundaries" href="Boundaries.html" />
+  
+   
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Functions.html" title="pyDEM Functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Boundaries.html" title="pyDEM Boundaries"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyDEM 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="API.html" accesskey="U">API</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="container-wrapper">
+
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar">
+        <a href="
+    index.html" class="text-logo">pyDEM 2.0 documentation</a>
+        
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Table Of Contents</h2>
+  </div>
+  <div class="sidebar-toc">
+    
+    
+      <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="API.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Boundaries.html">pyDEM Boundaries</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pyDEM Error Margins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Functions.html">pyDEM Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IDEM.html">pyDEM Functions</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  </div>
+</div>
+        
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="search.html" method="GET" role="form">
+        <div class="input-group">
+          <input name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+        <div id="right-column">
+          
+          <div role="navigation" aria-label="breadcrumbs navigation">
+            <ol class="breadcrumb">
+              <li><a href="index.html">Docs</a></li>
+              
+                <li><a href="API.html">API</a></li>
+              
+              <li>pyDEM Error Margins</li>
+            </ol>
+          </div>
+          
+          <div class="document clearer body">
+            
+  <div class="section" id="pydem-error-margins">
+<h1>pyDEM Error Margins<a class="headerlink" href="#pydem-error-margins" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hdemi">
+<h2>HDEMI<a class="headerlink" href="#hdemi" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.hdemi">
+<code class="descclassname">pydem.</code><code class="descname">hdemi</code><span class="sig-paren">(</span><em>f</em>, <em>x</em>, <em>dx</em>, <em>bound</em>, <em>projection=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.hdemi" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Compute the Hyperdimensional error margin index. See &#8220;An Inductive Design Exploration Method for Robust Multiscale Materials Design&#8221; Choi, McDowell, Allen, Rosen, Mistree.
+Requires the distance computations from Boundary objects which may, or may not, be subject to significant errors if holes exist, etc.
+Distance computations are also relatively expensive, so recommend exploring mlv or vor alternatives.</p>
+<dl class="docutils">
+<dt>f <span class="classifier-delimiter">:</span> <span class="classifier">array_like</span></dt>
+<dd>Mapping functions (number of bounding functions with nominal value last, number of output variables)</dd>
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Nominal input to evaluate</dd>
+<dt>dx <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Variation along each input dimension</dd>
+<dt>bound <span class="classifier-delimiter">:</span> <span class="classifier">Boundary</span></dt>
+<dd>Feasible region representation</dd>
+</dl>
+<dl class="docutils">
+<dt>error_margin <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Return -1 if value is within the feasible region, otherwise compute the full hyperdimensional error margin index which is the minimum ratio of the output range distance to the distance to the boundary along that dimension.
+HD_{EMI} = egin{cases} min_{i} left[</dd>
+</dl>
+</div></blockquote>
+<p>rac{leftVert ar{y}-b_i 
+ightVert}{Delta y_{i}} 
+ight], &amp; mbox{for } ar{y} in Omega -1, &amp; mbox{for } ar{y} 
+otin Omega end{cases}</p>
+</dd></dl>
+
+</div>
+<div class="section" id="miv">
+<h2>MIV<a class="headerlink" href="#miv" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.miv">
+<code class="descclassname">pydem.</code><code class="descname">miv</code><span class="sig-paren">(</span><em>f</em>, <em>x</em>, <em>dx</em>, <em>bound</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.miv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum Independent Variation
+Possible replacement error margin for the Hyperdimensional error margin index. Evaluates the mid-points of the outer extents to see if all of the output region (expressed as a hyperrectangle) lies within the feasible space, and is thus a robust space.
+Could currently fail due to gaps in the feasible space which are contained within the extents of the output region. Can be addressed efficiently by means of KD-tree or similar.</p>
+<dl class="docutils">
+<dt>f <span class="classifier-delimiter">:</span> <span class="classifier">array_like</span></dt>
+<dd>Mapping functions (number of bounding functions with nominal value last, number of output variables)</dd>
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Nominal input to evaluate</dd>
+<dt>dx <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Variation along each input dimension</dd>
+<dt>bound <span class="classifier-delimiter">:</span> <span class="classifier">Boundary</span></dt>
+<dd>Feasible region representation</dd>
+</dl>
+<dl class="docutils">
+<dt>error_margin <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Uses same convention as HDemi for compatibility of logic. -1 if not in feasible region, 1.5 otherwise</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="vor">
+<h2>VOR<a class="headerlink" href="#vor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pydem.vor">
+<code class="descclassname">pydem.</code><code class="descname">vor</code><span class="sig-paren">(</span><em>f</em>, <em>x</em>, <em>dx</em>, <em>bound</em><span class="sig-paren">)</span><a class="headerlink" href="#pydem.vor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Valid Output Region
+Possible replacement error margin for the Hyperdimensional error margin index. Evaluates the outer extents to see if all of the output region (expressed as a hyperrectangle) lies within the feasible space, and is thus a robust space.
+Could currently fail due to gaps in the feasible space which are contained within the extents of the output region. Can be addressed efficiently by means of KD-tree or similar.</p>
+<dl class="docutils">
+<dt>f <span class="classifier-delimiter">:</span> <span class="classifier">array_like</span></dt>
+<dd>Mapping functions (number of bounding functions with nominal value last, number of output variables)</dd>
+<dt>x <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Nominal input to evaluate</dd>
+<dt>dx <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Variation along each input dimension</dd>
+<dt>bound <span class="classifier-delimiter">:</span> <span class="classifier">Boundary</span></dt>
+<dd>Feasible region representation</dd>
+</dl>
+<dl class="docutils">
+<dt>error_margin <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Uses same convention as HDemi for compatibility of logic. -1 if not in feasible region, 1.5 otherwise</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+            
+  <div class="footer-relations">
+    
+      <div class="pull-left">
+        <a class="btn btn-default" href="Boundaries.html" title="previous chapter (use the left arrow)">pyDEM Boundaries</a>
+      </div>
+    
+      <div class="pull-right">
+        <a class="btn btn-default" href="Functions.html" title="next chapter (use the right arrow)">pyDEM Functions</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Functions.html" title="pyDEM Functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Boundaries.html" title="pyDEM Boundaries"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pyDEM 2.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="API.html" >API</a> &#187;</li> 
+      </ul>
+    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2017, AMM. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  </body>
+</html>

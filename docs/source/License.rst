@@ -1,4 +1,6 @@
-=======
+License
+------------
+
 The MIT License (MIT)
 
 Copyright (c) 2016, Paul Kern, Matthew Priddy, David McDowell

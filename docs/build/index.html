@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+  
+  <!-- Licensed under the Apache 2.0 License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/open-sans/stylesheet.css" />
+  <!-- Licensed under the SIL Open Font License -->
+  <link rel="stylesheet" type="text/css" href="_static/fonts/source-serif-pro/source-serif-pro.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/bootstrap-theme.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>Python Design Exploration Method (pyDEM) &#8212; pyDEM 2.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/guzzle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction to IDEM" href="Introduction.html" />
+  
+   
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Introduction.html" title="Introduction to IDEM"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">pyDEM 2.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="container-wrapper">
+
+      <div id="mobile-toggle">
+        <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></a>
+      </div>
+  <div id="left-column">
+    <div class="sphinxsidebar">
+        <a href="
+    #" class="text-logo">pyDEM 2.0 documentation</a>
+        
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <h2>Table Of Contents</h2>
+  </div>
+  <div class="sidebar-toc">
+    
+    
+      <ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction to IDEM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html#further-details">Further details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html#error-margins">Error margins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="API.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GitHub.html">GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="License.html">License</a></li>
+</ul>
+
+    
+  </div>
+</div>
+        
+<div class="sidebar-block">
+  <div class="sidebar-wrapper">
+    <div id="main-search">
+      <form class="form-inline" action="search.html" method="GET" role="form">
+        <div class="input-group">
+          <input name="q" type="text" class="form-control" placeholder="Search...">
+        </div>
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+        <div id="right-column">
+          
+          <div role="navigation" aria-label="breadcrumbs navigation">
+            <ol class="breadcrumb">
+              <li><a href="#">Docs</a></li>
+              
+              <li>Python Design Exploration Method (pyDEM)</li>
+            </ol>
+          </div>
+          
+          <div class="document clearer body">
+            
+  <div class="section" id="python-design-exploration-method-pydem">
+<h1>Python Design Exploration Method (pyDEM)<a class="headerlink" href="#python-design-exploration-method-pydem" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<img alt="_images/pydemlogo.jpg" src="_images/pydemlogo.jpg" />
+<div class="section" id="inductive-design-exploration-method-idem">
+<h2>Inductive Design Exploration Method (IDEM)<a class="headerlink" href="#inductive-design-exploration-method-idem" title="Permalink to this headline">¶</a></h2>
+<p>The Inductive Design Exploration Method (IDEM) is a robust method for accounting for uncertainty propagation through multi-level problems. IDEM combines several solution-finding strategies, such as top-down (inductive) and bottom-up (deductive) design exploration, discretized ranges of parameters, with recursive function evaluation to identify robust solutions to materials design problems. This approach lends itself to developing process-structure-property-performance (PSPP) mappings of material systems, and can help identify materials of interest for future exploration.</p>
+<p>For further references please see:</p>
+<ul class="simple">
+<li>Choi, Haejin, et al. &#8220;An inductive design exploration method for robust multiscale materials design.&#8221; Journal of Mechanical Design 130.3 (2008): 031402, <a class="reference external" href="doi:10.1115/1.2829860">doi:10.1115/1.2829860</a></li>
+<li>McDowell, David L., et al. Integrated design of multiscale, multifunctional materials and products. Butterworth-Heinemann, 2009.</li>
+</ul>
+</div>
+<div class="section" id="pydem">
+<h2>pyDEM<a class="headerlink" href="#pydem" title="Permalink to this headline">¶</a></h2>
+<p>Utilizing a Python-scripted framework for IDEM, the Python Design Exploration Method (pyDEM) implements a fully general IDEM instantiation that allows for the linkage of input variables, objective functions, and levels or mappings. A short introduction is covered in the examples section. Any additional code or example contributions are welcome.</p>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>See the pyDEM examples and <a class="reference internal" href="API.html"><span class="doc">API</span></a>.</p>
+</div>
+</div>
+<div class="section" id="index-and-search">
+<h1>Index and search<a class="headerlink" href="#index-and-search" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+            
+  <div class="footer-relations">
+    
+      <div class="pull-right">
+        <a class="btn btn-default" href="Introduction.html" title="next chapter (use the right arrow)">Introduction to IDEM</a>
+      </div>
+    </div>
+    <div class="clearer"></div>
+  
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Introduction.html" title="Introduction to IDEM"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">pyDEM 2.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+<script type="text/javascript">
+  $("#mobile-toggle a").click(function () {
+    $("#left-column").toggle();
+  });
+</script>
+<script type="text/javascript" src="_static/js/bootstrap.js"></script>
+  <div class="footer">
+    &copy; Copyright 2017, AMM. Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  </body>
+</html>
