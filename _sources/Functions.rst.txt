@@ -1,5 +1,5 @@
-pyDEM Functions
-===============
+Function handling
+==================
 
 Anonymous function
 ----------------------
