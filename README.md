@@ -10,5 +10,5 @@ For further references please see:
 Utilizing a Python-scripted framework for IDEM, the Python Design Exploration Method (pyDEM) implements a fully general IDEM instantiation that allows for the linkage of input variables, objective functions, and levels or mappings. A short introduction is covered in the examples section. Any additional code or example contributions are welcome.
 
 # Documentation
-See the pyDEM examples and API.
+See [official documentation](https://materialsinnovation.github.io/pydem) for pyDEM examples, API description and more.
 
